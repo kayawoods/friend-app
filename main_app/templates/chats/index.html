@@ -1,41 +1,37 @@
-{% extends 'base.html' %} {% load static %} {% block head %}
-<link
-  rel="stylesheet"
-  href=""
-/>
-{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="" />
+{% endblock %}
+
+{% block content %}
 
 <section class="page-header">
   <h1>I Hear You</h1>
-  <img
-    src=""
-    alt=""
-  />
-  <img
-    src=""
-    alt=""
-  />
-  <img
-    src=""
-    alt=""
-  />
-  <img
-    src=""
-    alt=""
-  />
+  <img src="" alt="" />
+  <img src="" alt="" />
+  <img src="" alt="" />
+  <img src="" alt="" />
 </section>
 
-<div class="chat-details">
-    <h1>Chat:{{ chat.title }}</h1>
-    {% for entry in chat.entries.all %}
-    <div class="message">
-      <p><strong>You:</strong> {{ entry.notes }}</p>
-      <p><strong>Bot:</strong> {{ entry.response }}</p>
-      <p><em>{{ entry.date }}</em></p>
+<div class="chat-list">
+  {% for chat in chats %}
+    <div class="chat-summary">
+      <h2>
+        <a href="{% url 'chat-detail' chat.id %}">Chat: {{ chat.entries }}</a>
+      </h2>
+
+      {% if chat.entries.exists %}
+        <p><strong>Most recent:</strong> {{ chat.entries.last.response|truncatechars:60 }}</p>
+      {% else %}
+        <p>No messages yet.</p>
+      {% endif %}
+      
+      <hr>
     </div>
-    <hr>
   {% empty %}
-    <p>No messages yet.</p>
+    <p>No chats yet.</p>
   {% endfor %}
 </div>
 

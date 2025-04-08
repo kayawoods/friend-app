@@ -19,17 +19,6 @@ TONE = (
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    tone = models.CharField(
-        max_length=100,
-        choices = TONE, 
-        default=TONE[0][0]
-        )
-    
-    emoji_level = models.CharField(
-        max_length=100,
-        choices=EMOJI_LEVEL,
-        default=EMOJI_LEVEL[0][0]
-    )
     preferred_name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -41,6 +30,8 @@ class Entry(models.Model):
     prompt = models.CharField(max_length=500)
     notes = models.CharField(max_length=500, blank=True)
     date = models.DateField()
+    tone = models.CharField(max_length=100, choices=TONE, default='friendly')
+    emoji_level = models.CharField(max_length=100, choices=EMOJI_LEVEL, default='light')
 
 
     def __str__(self):
@@ -48,12 +39,14 @@ class Entry(models.Model):
 
 class Chat(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    title = models.CharField(max_length=255, blank=True)
+    initial_message = models.TextField()
     entries= models.ManyToManyField(Entry)
+    tone = models.CharField(max_length=100, choices=TONE, default='friendly')
+    emoji_level = models.CharField(max_length=100, choices=EMOJI_LEVEL, default='light')
     
 
     def __str__(self):
-        return self.title
+        return f"chat with {self.user.username}"
     
 
     
