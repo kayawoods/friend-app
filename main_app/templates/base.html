@@ -24,7 +24,7 @@
       <nav>
         <ul>
             {% if user.is_authenticated %}
-              <li><a href="{% url 'chat-index' %}">All Chats</a></li>
+              <li><a href="{% url 'chat-index' %}">All Heards</a></li>
               <li><a href="{% url 'about' %}">About</a></li>
               <li>
                 <form id="logout-form" method="post" action="{% url 'logout' %}">
@@ -33,7 +33,7 @@
                 </form>
               </li>
             {% else %}
-              <li><a href="{% url 'about' %}">About</a></li>
+              <li><a href="{% url 'about' %}">About Heard</a></li>
               <li><a href="{% url 'home' %}">Login</a></li>
             {% endif %}
           </ul>

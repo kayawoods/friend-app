@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  href=""
+/>
+{% endblock %} {% block content %}
+
+<section class="page-header">
+  <h1>I Hear You</h1>
+  <img
+    src=""
+    alt=""
+  />
+  <img
+    src=""
+    alt=""
+  />
+  <img
+    src=""
+    alt=""
+  />
+  <img
+    src=""
+    alt=""
+  />
+</section>
+
+<div class="chat-details">
+    <h1>Chat:{{ chat.title }}</h1>
+    {% for entry in chat.entries.all %}
+    <div class="message">
+      <p><strong>You:</strong> {{ entry.notes }}</p>
+      <p><strong>Bot:</strong> {{ entry.response }}</p>
+      <p><em>{{ entry.date }}</em></p>
+    </div>
+    <hr>
+  {% empty %}
+    <p>No messages yet.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}
