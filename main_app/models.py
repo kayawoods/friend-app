@@ -4,8 +4,8 @@ from datetime import date
 from django.contrib.auth.models import User
 
 EMOJI_LEVEL = (
+    ('none', 'None'),
     ('light', 'Light'),
-    ('medium', 'Medium'),
     ('heavy', 'Heavy')
 )
 

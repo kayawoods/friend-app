@@ -34,39 +34,16 @@ def chat_detail(request, chat_id):
     entries = chat.entries.all()
     return render(request, 'chats/detail.html', {'chat': chat, 'entries': entries})
 
-@login_required
+
 def fake_response(tone, emoji_level): 
     return f"I am hardcoded.I am being {tone} with {emoji_level} emojis." 
 
 class ChatCreate(LoginRequiredMixin, CreateView):
     model = Chat 
     fields = ['initial_message', 'tone', 'emoji_level']
-    success_url = '/chats/'
+
 
     def form_valid(self, form):
-        form.instance.user = self.request.user  
-        chat = form.save()
-        response = fake_response(chat.tone, chat.emoji_level)
-
- 
-        
-        entry = Entry. objects.create(
-        user=self.request.user, 
-        prompt=chat.initial_message, 
-        response = response, 
-        date=date.today(),
-        tone=chat.tone, 
-        emoji_level=chat.emoji_level)
-
-        chat.entries.add(entry)
-        return redirect('chat-detail', chat_id=chat.id)
-
-class ChatUpdate(LoginRequiredMixin, UpdateView):
-    model = Chat
-    fields = ['tone', 'emoji_level']
-    
-
-    def form_valid(self, form): 
         form.instance.user = self.request.user 
         chat = form.save()
         response = fake_response(chat.tone, chat.emoji_level)
@@ -80,7 +57,26 @@ class ChatUpdate(LoginRequiredMixin, UpdateView):
         emoji_level=chat.emoji_level)
 
         chat.entries.add(entry)
-        return redirect('chat-detail', chat_id=chat.id )
+        return super().form_valid(form)
+
+class ChatUpdate(LoginRequiredMixin, UpdateView):
+    model = Chat
+    fields = ['tone', 'emoji_level']
+    
+
+    def form_valid(self, form): 
+        form.instance.user = self.request.user 
+        chat = form.save()
+        response = fake_response(chat.tone, chat.emoji_level)
+
+        entry= chat.entries.first()
+        entry.response = response 
+        entry.tone=chat.tone
+        entry.emoji_level=chat.emoji_level
+        entry.save()
+
+        return super().form_valid(form) 
+        
 
 class ChatDelete(LoginRequiredMixin, DeleteView):
     model = Chat

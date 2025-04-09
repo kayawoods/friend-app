@@ -17,7 +17,7 @@
   {% endif %}
 </div>
 
-<form method="post" action="{%url 'chat-create' %}" class="form-container">
+<form method="post" action="" class="form-container">
   {% csrf_token %}
   <table>
     {{ form.as_table }}
