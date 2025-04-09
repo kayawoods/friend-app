@@ -43,6 +43,9 @@ class Chat(models.Model):
     entries= models.ManyToManyField(Entry)
     tone = models.CharField(max_length=100, choices=TONE, default='friendly')
     emoji_level = models.CharField(max_length=100, choices=EMOJI_LEVEL, default='light')
+
+    def get_absolute_url(self):
+        return reverse('chat-detail', kwargs={'chat_id': self.id})
     
 
     def __str__(self):

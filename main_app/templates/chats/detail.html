@@ -14,6 +14,8 @@
             <p>No messages yet.</p>
           {% endfor %}
         </div>
+        <a href="{% url 'chat-update' chat.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'chat-delete' chat.id %}" class="btn danger">Delete</a>
       </div>
     </div>
   </section>

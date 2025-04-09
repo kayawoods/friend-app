@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from .models import Entry, Profile, Chat 
 from django.shortcuts import redirect 
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 def chat_index(request):
@@ -42,5 +42,11 @@ class ChatCreate(CreateView):
           form.instance.user = self.request.user  
           return super().form_valid(form)
 
-    
+class ChatUpdate(UpdateView):
+    model = Chat
+    fields = ['tone', 'emoji_level']
+
+class ChatDelete(DeleteView):
+    model = Chat
+    success_url = '/chats/'   
     
