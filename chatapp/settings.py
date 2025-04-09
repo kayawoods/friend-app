@@ -137,6 +137,7 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+LOGIN_URL = 'home'
 LOGIN_REDIRECT_URL = 'chat-index'
 LOGOUT_REDIRECT_URL = 'home'
 

@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 from .models import Entry, Profile, Chat 
 from django.shortcuts import redirect 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from datetime import date
 
-
+@login_required
 def chat_index(request):
     print("Current user:", request.user)
     chats = Chat.objects.filter(user=request.user)
@@ -21,21 +22,23 @@ def about(request):
     return render(request, 'about.html')
 
  
+@login_required
 def chat(request): 
      user = request.user 
      chat = Chat.objects.create(user = user, initial_message="new chat")
      return redirect('chat-detail', chat_id=chat.id)
 
+@login_required
 def chat_detail(request, chat_id):
     chat = Chat.objects.get(id=chat_id)
     entries = chat.entries.all()
     return render(request, 'chats/detail.html', {'chat': chat, 'entries': entries})
 
-
+@login_required
 def fake_response(tone, emoji_level): 
     return f"I am hardcoded.I am being {tone} with {emoji_level} emojis." 
 
-class ChatCreate(CreateView):
+class ChatCreate(LoginRequiredMixin, CreateView):
     model = Chat 
     fields = ['initial_message', 'tone', 'emoji_level']
     success_url = '/chats/'
@@ -58,7 +61,7 @@ class ChatCreate(CreateView):
         chat.entries.add(entry)
         return redirect('chat-detail', chat_id=chat.id)
 
-class ChatUpdate(UpdateView):
+class ChatUpdate(LoginRequiredMixin, UpdateView):
     model = Chat
     fields = ['tone', 'emoji_level']
     
@@ -79,7 +82,7 @@ class ChatUpdate(UpdateView):
         chat.entries.add(entry)
         return redirect('chat-detail', chat_id=chat.id )
 
-class ChatDelete(DeleteView):
+class ChatDelete(LoginRequiredMixin, DeleteView):
     model = Chat
     success_url = '/chats/'   
     
