@@ -248,3 +248,43 @@ html {
     }
   }
   
+  #logout-form button {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--color-text);
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: var(--hover-transition);
+    position: relative;
+    z-index: 1;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  
+  #logout-form button:hover {
+    color: var(--nav-accent);
+    background-color: rgba(184, 156, 245, 0.1);
+    box-shadow: var(--hover-glow);
+  }
+  
+  /* Optional: Add underline animation like other nav links */
+  #logout-form button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--nav-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+  
+  #logout-form button:hover::after {
+    transform: scaleX(1);
+  }

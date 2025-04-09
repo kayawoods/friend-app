@@ -1,10 +1,12 @@
-from django.shortcuts import render
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from .models import Entry, Profile, Chat 
 from django.shortcuts import redirect 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from datetime import date
 
 
 def chat_index(request):
@@ -39,14 +41,60 @@ class ChatCreate(CreateView):
     success_url = '/chats/'
 
     def form_valid(self, form):
-          form.instance.user = self.request.user  
-          return super().form_valid(form)
+        form.instance.user = self.request.user  
+        chat = form.save()
+        response = fake_response(chat.tone, chat.emoji_level)
+
+ 
+        
+        entry = Entry. objects.create(
+        user=self.request.user, 
+        prompt=chat.initial_message, 
+        response = response, 
+        date=date.today(),
+        tone=chat.tone, 
+        emoji_level=chat.emoji_level)
+
+        chat.entries.add(entry)
+        return redirect('chat-detail', chat_id=chat.id)
 
 class ChatUpdate(UpdateView):
     model = Chat
     fields = ['tone', 'emoji_level']
+    
+
+    def form_valid(self, form): 
+        form.instance.user = self.request.user 
+        chat = form.save()
+        response = fake_response(chat.tone, chat.emoji_level)
+
+        entry= Entry.objects.create(
+        user=self.request.user, 
+        prompt=chat.initial_message, 
+        response = response, 
+        date=date.today(),
+        tone=chat.tone, 
+        emoji_level=chat.emoji_level)
+
+        chat.entries.add(entry)
+        return redirect('chat-detail', chat_id=chat.id )
 
 class ChatDelete(DeleteView):
     model = Chat
     success_url = '/chats/'   
     
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('chat-index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    else: 
+            form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
+

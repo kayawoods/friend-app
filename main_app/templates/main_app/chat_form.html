@@ -8,15 +8,16 @@
 {% block content %}
 <div class="page-header">
   {% if object %}
-    <h1>Edit Chat</h1>
-    <p class="sub">Things change. Update you tone and emoji preference here</p>
+    <h1>Edit</h1>
+    <div>
+    <p class="sub">Things change. Update you tone and emoji preference here. I will respond accordingly.</p>
   {% else %}
     <h1>Say Something</h1>
     <p class="sub">Choose your tone, your emoji preference, and start the conversation.</p>
   {% endif %}
 </div>
 
-<form method="post" class="form-container">
+<form method="post" action="{%url 'chat-create' %}" class="form-container">
   {% csrf_token %}
   <table>
     {{ form.as_table }}

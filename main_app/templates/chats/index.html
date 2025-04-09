@@ -23,7 +23,7 @@
       </h2>
 
       {% if chat.entries.exists %}
-        <p><strong>Most recent:</strong> 
+        <p><strong>Response: {{chat.tone }}</strong> 
       {% else %}
         <p>No messages yet.</p>
       {% endif %}

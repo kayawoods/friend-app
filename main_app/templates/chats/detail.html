@@ -2,10 +2,10 @@
     <div class="card">
       <div class="card-content">
         <div class="chat-details">
-          <h1>Chat: {{ chat.initial_message }}</h1>
+          <h1>Talk # {{ chat.id }}</h1>
           {% for entry in chat.entries.all %}
             <div class="message">
-              <p><strong>You:</strong> {{ entry.notes }}</p>
+              <p><strong>You:</strong> {{ chat.initial_message }}</p>
               <p><strong>Bot:</strong> {{ entry.response }}</p>
               <p><em>{{ entry.date }}</em></p>
             </div>
