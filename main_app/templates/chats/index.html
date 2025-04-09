@@ -19,11 +19,11 @@
   {% for chat in chats %}
     <div class="chat-summary">
       <h2>
-        <a href="{% url 'chat-detail' chat.id %}">Chat: {{ chat.entries }}</a>
+        <a href="{% url 'chat-detail' chat.id %}">{{ chat.initial_message}}</a>
       </h2>
 
       {% if chat.entries.exists %}
-        <p><strong>Most recent:</strong> {{ chat.entries.last.response|truncatechars:60 }}</p>
+        <p><strong>Most recent:</strong> 
       {% else %}
         <p>No messages yet.</p>
       {% endif %}

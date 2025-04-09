@@ -7,6 +7,6 @@ urlpatterns = [
     path('chats/', views.chat_index, name='chat-index'), 
     path('chats/<int:chat_id>/',views.chat_detail, name='chat-detail'), 
     path('chat/', views.chat, name='chat'),
-    path('chats/create/', views.ChatCreate.as_view(), name='chat-create'),
+    path('chats/create/', views.ChatCreate.as_view(), name='chats-create'),
     
 ]

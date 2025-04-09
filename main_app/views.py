@@ -36,9 +36,11 @@ def fake_response(tone, emoji_level):
 class ChatCreate(CreateView):
     model = Chat 
     fields = ['initial_message', 'tone', 'emoji_level']
+    success_url = '/chats/'
 
+    def form_valid(self, form):
+          form.instance.user = self.request.user  
+          return super().form_valid(form)
 
-    def form_valid(self,form): 
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+    
     
