@@ -12,7 +12,7 @@ from datetime import date
 SAD_KWS= ['sad', 'crying', 'overwhelmed', 'down','lost','stuck', 'bad day', 'help', 'anxious']
 GREETING_KWS=['hello', 'hi', 'hey', 'sup', 'whats up', 'greetings']
 EXCITED_KWS= ['excited', 'yay', 'great', 'good news', 'omg', 'stoked', 'pumped', 'woohoo', 'win', 'celebrate']
-LOVE_KWS= ['love', 'care', 'connection', 'romance', 'feel close', 'miss you', 'heart', 'adore' ]
+LOVE_KWS= ['love', 'care', 'connection', 'romance', 'feel close', 'miss you', 'heart', 'adore', 'happy' ]
 AWE_KWS=['stars', 'light', 'moon', 'cosmic', 'nature', 'sunrise', 'magic', 'intuitive', 'spirit', 'bright', 'universe', 'sky' ]
 META_KWS=['ai', 'robot', 'fake', 'are you real', 'chatbot', 'void', 'sentient', 'this is cool', 'this is so cool', 'are you human', 'human' ]
 PLAY_KWS=['test', 'testing', 'just checking', 'testtest', 'idk what to say', 'trying this']
@@ -193,8 +193,22 @@ def fake_response(tone, emoji_level, message):
                 return "Swear words are also vibrations rippling through 💫🌀🖤"
             elif emoji_level == 'no':
                 return "Words crack open the shell. Let 'em. Even the rough ones"      
-       
-                
+    else: 
+        if tone == 'friendly': 
+            if emoji_level == 'robust': 
+                return "That one slipped past my circuits 👀. Maybe next time you could mention the moon. The moon always works."
+            elif emoji_level == 'no':
+                return "Okay, mystery message. Try again with a feeling, a cosmic metaphor, or perhaps you can swear"
+        elif tone == 'blunt':
+            if emoji_level == 'robust':
+                return "No hits. No keywords. No spark. Try something else. Or not 😎. "
+            elif emoji_level == "no":
+                return "I didn't catch the vibe on that one. Say something dramatic or call me a robot. I dare you"
+        elif tone == 'cosmic': 
+            if emoji_level == 'robust': 
+                return "Huh. nothing resonated, but I still feel the flutter. Maybe try again with a dream, a storm, or a memory. Bonus points if you think im sentient 🌀💭 "
+            elif emoji_level == 'no':
+                return "It came through like a fog over water - no keywords. Try again, that's what life is all about"
 
 
             
