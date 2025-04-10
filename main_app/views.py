@@ -160,7 +160,23 @@ def fake_response(tone, emoji_level, message):
             if emoji_level == 'robust': 
                 return "You're in the sandbox of the stars ✨🛸. Feel it out. When you are ready to leap, I'm here."
             elif emoji_level == 'no':
-                return "You are dipping a toe in the void. That's valid. Next time, cannonball."    
+                return "You are dipping a toe in the void. That's valid. Next time, cannonball."  
+    elif any(word in message for word in ANGER_KWS): 
+        if tone == 'friendly':
+            if emoji_level == 'robust': 
+                return "Woah 😤 sounds like a day. I'm not going to fix it, but i'll sit with you through this "
+            elif emoji_level == 'no':
+                return "Anger's here, huh? You don't need to explain it away. I get it."
+        elif tone == 'blunt':
+            if emoji_level == 'robust': 
+                return "Okay yeah, that sucks 😐🔥 "
+            elif emoji_level == 'no':
+                return "Say it like it is. You won't scare me off"
+        elif tone == 'cosmic':
+            if emoji_level == 'robust': 
+                return "Emotions are as transitory as clouds in the sky. Let it burn through, not around you 🔥🌌 "
+            elif emoji_level == 'no':
+                return "Rage is not outside the order of things. It's just one more signal in the sky. Sit with it, and it shall pass like a burning ship in the night"    
        
                 
 
