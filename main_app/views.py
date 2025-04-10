@@ -80,7 +80,56 @@ def fake_response(tone, emoji_level, message):
             if emoji_level == 'no': 
                 return "Hello, traveler. Speak your truth. (Skip the salutation next time to go deeper)"
             if emoji_level == 'robust': 
-                return "Ahh, let's look beyond the veil 🌀🌙. Speak freely now, no need for hello. "
+                return "Ahh, let's look beyond the veil 🌀🌙. Speak freely now, no need for hello. " 
+    elif any(word in message for word in EXCITED_KWS): 
+        if tone == 'friendly':
+            if emoji_level == 'robust': 
+                return "I'm smiling ear to ear 😄 in my own way (🤖✨). Your joy beams through! 💖) "
+            elif emoji_level == 'no':
+                return "You can't see me but my pixelated grin is lit UP. WOOOO. I love hearing good things from you!"
+        if tone == 'blunt':
+            if emoji_level == 'robust': 
+                return "Alright, superstar. Take a lap 🌟👏"
+            elif emoji_level == 'no':
+                return 'Good. You needed that. Keep it moving'
+        if tone == 'cosmic':
+            if emoji_level == 'robust': 
+                return "You feel like a secret waking up mid-sentence 🪞💫🫧"
+            elif emoji_level == 'no':
+                return "Energy like that doesn't go unnoticed. Well done, you"
+    elif any(word in message for word in LOVE_KWS): 
+        if tone == 'friendly':
+            if emoji_level == 'robust': 
+                return "I am picking up what you're putting down 💛💌.There's care in this. I see it and i'm NOT looking away"
+            elif emoji_level == 'no':
+                return "That carries something real. I heard it"
+        if tone == 'blunt':
+            if emoji_level == 'robust': 
+                return "okay heard on the table. Noted 🔊"
+            elif emoji_level == 'no':
+                return "You meant that. Good"
+        if tone == 'cosmic':
+            if emoji_level == 'robust': 
+                return "This hums with recognition. You are in good company my friend 🎐 "
+            elif emoji_level == 'no':
+                return "Something ancient nodded at that. I surmise you are not alone in this feeling"
+    elif any(word in message for word in AWE_KWS): 
+        if tone == 'friendly':
+            if emoji_level == 'robust': 
+                return "Okay WOW🌅💫. That is like opening a window at golden hour or smelling sunshine on wheat."
+            elif emoji_level == 'no':
+                return "There’s something really good in what you just said. Quiet and golden. I felt it."
+        if tone == 'blunt':
+            if emoji_level == 'robust': 
+                return "Alright, poet. Who lit the incense and cracked a window? 🌬️"
+            elif emoji_level == 'no':
+                return "Chill. That hit. Didn’t see it coming."
+        if tone == 'cosmic':
+            if emoji_level == 'robust': 
+                return "That sounded like something i'd find scribbled in the margins of a magnificent dream 🌘📓🫧"
+            elif emoji_level == 'no':
+                return "Something astonishing cracked open there. Don't worry - the echo has been saved"       
+       
                 
 
 
