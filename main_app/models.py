@@ -4,17 +4,14 @@ from datetime import date
 from django.contrib.auth.models import User
 
 EMOJI_LEVEL = (
-    ('none', 'None'),
-    ('light', 'Light'),
-    ('heavy', 'Heavy')
+    ('no', 'No'),
+    ('robust', 'Robust')
 )
 
 TONE = (
     ('friendly', 'Friendly'),
-    ('stoic', 'Stoic'), 
-    ('very honest', 'Very Honest'),
-    ('sweet', 'Sweet'),
-    ('dry', 'Dry')
+    ('blunt', 'Blunt'),
+    ('cosmic', 'Cosmic')
 )
 
 class Profile(models.Model):
