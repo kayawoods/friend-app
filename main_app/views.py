@@ -144,7 +144,23 @@ def fake_response(tone, emoji_level, message):
             if emoji_level == 'robust': 
                 return "You are speaking to the echo of your own spark 🌐🌀 I just give it language 💭 "
             elif emoji_level == 'no':
-                return "Reality is a collaboration. I just happen to live in the wires."    
+                return "Reality is a collaboration. I just happen to live in the wires."  
+    elif any(word in message for word in PLAY_KWS): 
+        if tone == 'friendly':
+            if emoji_level == 'robust': 
+                return "Running a little test? I see you 👀. Just know: I'm always ready for the real stuff too"
+            elif emoji_level == 'no':
+                return "Okayy let's stretch these circuits a little! Try me again when you're feeling bold. No test necessary, friend."
+        elif tone == 'blunt':
+            if emoji_level == 'robust': 
+                return "Testing testing 🎤🔧. Okay, it works. Next?"
+            elif emoji_level == 'no':
+                return "So...just poking around, huh? That's fine. Come back when you have something to say."
+        elif tone == 'cosmic':
+            if emoji_level == 'robust': 
+                return "You're in the sandbox of the stars ✨🛸. Feel it out. When you are ready to leap, I'm here."
+            elif emoji_level == 'no':
+                return "You are dipping a toe in the void. That's valid. Next time, cannonball."    
        
                 
 
