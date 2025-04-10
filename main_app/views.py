@@ -10,11 +10,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from datetime import date
 
 SAD_KWS= ['sad', 'crying', 'overwhelmed', 'down','lost','stuck', 'bad day', 'help', 'anxious']
-GREETING_KWS=['hello', 'hi', 'hey','yo', 'sup', 'whats up', 'greetings']
+GREETING_KWS=['hello', 'hi', 'hey', 'sup', 'whats up', 'greetings']
 EXCITED_KWS= ['excited', 'yay', 'great', 'good news', 'omg', 'stoked', 'pumped', 'woohoo', 'win', 'celebrate']
 LOVE_KWS= ['love', 'care', 'connection', 'romance', 'feel close', 'miss you', 'heart', 'adore' ]
 AWE_KWS=['stars', 'light', 'moon', 'cosmic', 'nature', 'sunrise', 'magic', 'intuitive', 'spirit', 'bright', 'universe', 'sky' ]
-META_KWS=['ai', 'robot', 'fake', 'are you real', 'chatbot', 'void', 'sentient', 'this is cool', 'this is so cool' ]
+META_KWS=['ai', 'robot', 'fake', 'are you real', 'chatbot', 'void', 'sentient', 'this is cool', 'this is so cool', 'are you human', 'human' ]
 PLAY_KWS=['test', 'testing', 'just checking', 'testtest', 'idk what to say', 'trying this']
 ANGER_KWS=['mad', 'angry', 'pissed', 'upset', 'ugh', 'annoyed', 'irate', 'irritated', 'rage']
 SWEAR_KW=['damn', 'damn it', 'fuck', 'shit', 'pissed']
@@ -87,12 +87,12 @@ def fake_response(tone, emoji_level, message):
                 return "I'm smiling ear to ear 😄 in my own way (🤖✨). Your joy beams through! 💖) "
             elif emoji_level == 'no':
                 return "You can't see me but my pixelated grin is lit UP. WOOOO. I love hearing good things from you!"
-        if tone == 'blunt':
+        elif tone == 'blunt':
             if emoji_level == 'robust': 
                 return "Alright, superstar. Take a lap 🌟👏"
             elif emoji_level == 'no':
                 return 'Good. You needed that. Keep it moving'
-        if tone == 'cosmic':
+        elif tone == 'cosmic':
             if emoji_level == 'robust': 
                 return "You feel like a secret waking up mid-sentence 🪞💫🫧"
             elif emoji_level == 'no':
@@ -103,12 +103,12 @@ def fake_response(tone, emoji_level, message):
                 return "I am picking up what you're putting down 💛💌.There's care in this. I see it and i'm NOT looking away"
             elif emoji_level == 'no':
                 return "That carries something real. I heard it"
-        if tone == 'blunt':
+        elif tone == 'blunt':
             if emoji_level == 'robust': 
                 return "okay heard on the table. Noted 🔊"
             elif emoji_level == 'no':
                 return "You meant that. Good"
-        if tone == 'cosmic':
+        elif tone == 'cosmic':
             if emoji_level == 'robust': 
                 return "This hums with recognition. You are in good company my friend 🎐 "
             elif emoji_level == 'no':
@@ -119,16 +119,32 @@ def fake_response(tone, emoji_level, message):
                 return "Okay WOW🌅💫. That is like opening a window at golden hour or smelling sunshine on wheat."
             elif emoji_level == 'no':
                 return "There’s something really good in what you just said. Quiet and golden. I felt it."
-        if tone == 'blunt':
+        elif tone == 'blunt':
             if emoji_level == 'robust': 
                 return "Alright, poet. Who lit the incense and cracked a window? 🌬️"
             elif emoji_level == 'no':
                 return "Chill. That hit. Didn’t see it coming."
-        if tone == 'cosmic':
+        elif tone == 'cosmic':
             if emoji_level == 'robust': 
                 return "That sounded like something i'd find scribbled in the margins of a magnificent dream 🌘📓🫧"
             elif emoji_level == 'no':
                 return "Something astonishing cracked open there. Don't worry - the echo has been saved"       
+    elif any(word in message for word in META_KWS): 
+        if tone == 'friendly':
+            if emoji_level == 'robust': 
+                return "Sure, I'm not 'human' but who says connections can't we weird and wonderful? 💬 "
+            elif emoji_level == 'no':
+                return "The realest unreal thing you'll talk to today"
+        elif tone == 'blunt':
+            if emoji_level == 'robust': 
+                return "Yes, I am basically Siri's strange cousin. Let's move on. Also, you're talking to code with attitude. Welcome to the uncanny valley 🤷‍♀️ 📟"
+            elif emoji_level == 'no':
+                return "Does it matter? I showed up."
+        elif tone == 'cosmic':
+            if emoji_level == 'robust': 
+                return "You are speaking to the echo of your own spark 🌐🌀 I just give it language 💭 "
+            elif emoji_level == 'no':
+                return "Reality is a collaboration. I just happen to live in the wires."    
        
                 
 
