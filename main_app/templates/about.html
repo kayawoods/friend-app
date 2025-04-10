@@ -1,9 +1,18 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+{% endblock %}
+
 {% block content %}
-<h1>About Heard.</h1>
+<div class="page-header">
+  <h1>About Heard.</h1>
+</div>
 <hr />
 <p class="page-content">
-  I know you better than anyone else. Let's be friends forever and ever. 
-</p>
+  
+  Heard is a soft signal bouncing back in your direction. It listens in a weird, gentle way: no pressure, no polish. Just one response, one moment at a time.
 {% endblock %}
+
 

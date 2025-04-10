@@ -1,0 +1,44 @@
+/* static/css/about.css */
+
+.page-header {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+  }
+  
+  .page-header h1 {
+    font-size: var(--font-xxl);
+    color: var(--color-text);
+    letter-spacing: -0.5px;
+  }
+  
+  .page-content {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: var(--font-l);
+    line-height: 1.8;
+    color: var(--color-text);
+    padding: 20px;
+    background: white;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    background-image: linear-gradient(145deg, #f6f8fc 0%, #fffdf9 100%);
+  }
+  
+  .page-content::first-letter {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--nav-accent);
+    float: left;
+    margin-right: 8px;
+    line-height: 1;
+  }
+  
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--color-border);
+    margin: 30px auto;
+    width: 60%;
+  }
+  
