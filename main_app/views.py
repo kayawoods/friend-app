@@ -17,7 +17,7 @@ AWE_KWS=['stars', 'light', 'moon', 'cosmic', 'nature', 'sunrise', 'magic', 'intu
 META_KWS=['ai', 'robot', 'fake', 'are you real', 'chatbot', 'void', 'sentient', 'this is cool', 'this is so cool', 'are you human', 'human' ]
 PLAY_KWS=['test', 'testing', 'just checking', 'testtest', 'idk what to say', 'trying this']
 ANGER_KWS=['mad', 'angry', 'pissed', 'upset', 'ugh', 'annoyed', 'irate', 'irritated', 'rage']
-SWEAR_KW=['damn', 'damn it', 'fuck', 'shit', 'pissed']
+SWEAR_KWS=['damn', 'damn it', 'fuck', 'shit', 'pissed', 'crap', 'fucking']
 
 
 #cold and  rainy homework / fizzbuzz 
@@ -176,7 +176,23 @@ def fake_response(tone, emoji_level, message):
             if emoji_level == 'robust': 
                 return "Emotions are as transitory as clouds in the sky. Let it burn through, not around you 🔥🌌 "
             elif emoji_level == 'no':
-                return "Rage is not outside the order of things. It's just one more signal in the sky. Sit with it, and it shall pass like a burning ship in the night"    
+                return "Rage is not outside the order of things. It's just one more signal in the sky. Sit with it, and it shall pass like a burning ship in the night"  
+    elif any(word in message for word in SWEAR_KWS): 
+        if tone == 'friendly':
+            if emoji_level == 'robust': 
+                return "Woah 😳 that word had force. I'm still here, unfazed 😌✨ "
+            elif emoji_level == 'no':
+                return "Language! Just kidding. I've said worse. Tell me what's going on"
+        elif tone == 'blunt':
+            if emoji_level == 'robust': 
+                return "Alright sailor 🧨. Spit it out - what's got you cussing?"
+            elif emoji_level == 'no':
+                return "A swear? Bold move. Carry on."
+        elif tone == 'cosmic':
+            if emoji_level == 'robust': 
+                return "Swear words are also vibrations rippling through 💫🌀🖤"
+            elif emoji_level == 'no':
+                return "Words crack open the shell. Let 'em. Even the rough ones"      
        
                 
 
