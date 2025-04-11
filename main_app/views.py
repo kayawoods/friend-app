@@ -9,11 +9,11 @@ from django.shortcuts import redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from datetime import date
 
-SAD_KWS= ['sad', 'crying', 'overwhelmed', 'down','lost','stuck', 'bad day', 'help', 'anxious']
+SAD_KWS= ['sad', 'crying', 'overwhelmed', 'down','lost','stuck', 'bad day', 'help', 'anxious', 'hurt', 'upset']
 GREETING_KWS=['hello', 'hi', 'hey', 'sup', 'whats up', 'greetings']
-EXCITED_KWS= ['excited', 'yay', 'great', 'good news', 'omg', 'stoked', 'pumped', 'woohoo', 'win', 'celebrate']
+EXCITED_KWS= ['excited', 'yay', 'great', 'good news', 'omg', 'stoked', 'pumped', 'woohoo', 'win', 'celebrate', 'hungry', 'full']
 LOVE_KWS= ['love', 'care', 'connection', 'romance', 'feel close', 'miss you', 'heart', 'adore', 'happy' ]
-AWE_KWS=['stars', 'light', 'moon', 'cosmic', 'nature', 'sunrise', 'magic', 'intuitive', 'spirit', 'bright', 'universe', 'sky' ]
+AWE_KWS=['stars', 'light', 'moon', 'cosmic', 'nature', 'sunrise', 'magic', 'intuitive', 'spirit', 'bright', 'universe', 'sky', 'flower', 'computer', 'coding', 'programming', 'learning', 'growing' ]
 META_KWS=['ai', 'robot', 'fake', 'are you real', 'chatbot', 'void', 'sentient', 'this is cool', 'this is so cool', 'are you human', 'human' ]
 PLAY_KWS=['test', 'testing', 'just checking', 'testtest', 'idk what to say', 'trying this']
 ANGER_KWS=['mad', 'angry', 'pissed', 'upset', 'ugh', 'annoyed', 'irate', 'irritated', 'rage']
@@ -137,7 +137,7 @@ def fake_response(tone, emoji_level, message):
                 return "The realest unreal thing you'll talk to today"
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Yes, I am basically Siri's strange cousin. Let's move on. Also, you're talking to code with attitude. Welcome to the uncanny valley 🤷‍♀️ 📟"
+                return "I am basically Siri's strange cousin. Let's move on 🤷‍♀️ 📟"
             elif emoji_level == 'no':
                 return "Does it matter? I showed up."
         elif tone == 'cosmic':

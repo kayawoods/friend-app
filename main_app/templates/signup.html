@@ -13,9 +13,20 @@
 {% endif %}
 <form action="" method="post" class="form-container" autocomplete="off">
   {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
+
+  {% for field in form %}
+    <div class="form-field">
+      {{ field.label_tag }}
+      {{ field }}
+      {% if field.help_text %}
+        <p class="help-text">{{ field.help_text }}</p>
+      {% endif %}
+      {% for error in field.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    </div>
+  {% endfor %}
+
   <button type="submit" class="btn submit">Submit</button>
 </form>
 

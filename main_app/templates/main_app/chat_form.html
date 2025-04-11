@@ -7,13 +7,7 @@
 
 {% block content %}
 <div class="page-header">
-  {% if object %}
-    <h1>Edit</h1>
-    <div>
-    <p class="sub">Things change. Update you tone and emoji preference here. I will respond accordingly.</p>
-  {% else %}
-    <h1>Go On, I'm Listening</h1>
-  {% endif %}
+  <h1>Go On, I'm Listening</h1>
 </div>
 
 <form method="post" action="" class="form-container">
@@ -23,4 +17,12 @@
   </table>
   <button type="submit" class="btn submit">Be Heard</button>
 </form>
+
+{% if object %}
+  <p class="sub update-message">
+    Things change. Update your tone and emoji preference here. I will respond accordingly.
+  </p>
+{% endif %}
 {% endblock %}
+
+

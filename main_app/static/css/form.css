@@ -18,6 +18,8 @@
 }
 
 .form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
 .form-container select,
 .form-container textarea {
   width: 100%;
@@ -53,3 +55,114 @@
 .form-container .btn.submit:hover {
   background-color: #9b80f0;
 }
+
+  
+  .form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    background-image: linear-gradient(145deg, #f6f8fc 0%, #fffdf9 100%);
+  }
+
+
+  .page-header.center {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.page-header.center h1 {
+  font-size: var(--font-xxl);
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.page-header.center .sub {
+  font-size: 1.6rem;
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+.update-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    max-width: 500px;
+    margin: 2.5rem auto 0;
+    line-height: 1.6;
+    font-style: italic;
+    opacity: 0.85;
+    padding: 0 1rem;
+  }
+
+  .btn.secondary {
+    background-color: transparent;
+    color: var(--nav-accent);
+    border: 2px solid var(--nav-accent);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn.secondary:hover {
+    background-color: var(--nav-accent);
+    color: white;
+  }
+  
+  .btn.danger {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    margin-left: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn.danger:hover {
+    background-color: #e04848;
+  }
+
+  .form-field {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+  
+  .form-field input,
+  .form-field select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: var(--font-reg);
+    font-family: 'IBM Plex Mono', monospace;
+    background-color: #fdfdfd;
+  }
+  
+  .help-text {
+    font-size: 1.3rem;
+    color: var(--color-text-light);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+  
+  .error {
+    color: #ff4d4f;
+    font-size: 1.3rem;
+    margin-top: 0.3rem;
+  }

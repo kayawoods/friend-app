@@ -13,32 +13,51 @@
   }
   
   .page-content {
-    max-width: 700px;
-    margin: 0 auto;
     font-size: var(--font-l);
     line-height: 1.8;
-    color: var(--color-text);
-    padding: 20px;
+    padding: 1.5rem 2rem;
     background: white;
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow);
     background-image: linear-gradient(145deg, #f6f8fc 0%, #fffdf9 100%);
+    flex: 1;
+    margin: 0;
+    text-align: left;
   }
   
-  .page-content::first-letter {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--nav-accent);
-    float: left;
-    margin-right: 8px;
-    line-height: 1;
+
+  .about-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
   }
   
-  hr {
-    border: none;
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 700px;
+    width: 100%;
+  }
+  
+  .about-content hr {
+    width: 100%;
     height: 1px;
     background: var(--color-border);
-    margin: 30px auto;
-    width: 60%;
+    border: none;
   }
-  
+
+  .sly-robot {
+    width: 160px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .about-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
