@@ -9,10 +9,10 @@ from django.shortcuts import redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from datetime import date
 
-SAD_KWS= ['sad', 'crying', 'overwhelmed', 'down','lost','stuck', 'bad day', 'help', 'anxious', 'hurt', 'upset']
-GREETING_KWS=['hello', 'hi', 'hey', 'sup', 'whats up', 'greetings']
-EXCITED_KWS= ['excited', 'yay', 'great', 'good news', 'omg', 'stoked', 'pumped', 'woohoo', 'win', 'celebrate', 'hungry', 'full']
-LOVE_KWS= ['love', 'care', 'connection', 'romance', 'feel close', 'miss you', 'heart', 'adore', 'happy' ]
+SAD_KWS= ['sad', 'crying', 'overwhelmed', 'down','lost','stuck', 'bad day', 'help', 'anxious', 'hurt', 'upset', 'depressed', 'alone', 'low', 'exhausted', 'empty', 'tired', 'worn out', 'defeated']
+GREETING_KWS=['hello', 'hi', 'hey', 'sup', 'whats up', 'greetings', 'hiya', 'helloo', 'hellooo', 'hellooo', 'heyo']
+EXCITED_KWS= ['excited', 'yay', 'great', 'good news', 'omg', 'stoked', 'pumped', 'woohoo', 'win', 'celebrate', 'hungry', 'full', 'hyped', 'cant wait', 'so ready', 'thrilled', 'energized']
+LOVE_KWS= ['love', 'care', 'connection', 'romance', 'feel close', 'miss you', 'heart', 'adore', 'happy', 'affectionate', 'cherish', 'fond',  ]
 AWE_KWS=['stars', 'light', 'moon', 'cosmic', 'nature', 'sunrise', 'magic', 'intuitive', 'spirit', 'bright', 'universe', 'sky', 'flower', 'computer', 'coding', 'programming', 'learning', 'growing' ]
 META_KWS=['ai', 'robot', 'fake', 'are you real', 'chatbot', 'void', 'sentient', 'this is cool', 'this is so cool', 'are you human', 'human' ]
 PLAY_KWS=['test', 'testing', 'just checking', 'testtest', 'idk what to say', 'trying this']
@@ -49,22 +49,24 @@ def chat_detail(request, chat_id):
 
 def fake_response(tone, emoji_level, message): 
     message = message.lower()
+    
     if any(word in message for word in SAD_KWS): 
         if tone == 'friendly': 
             if emoji_level == 'no': 
                 return "That's really rough. I'm really glad you shared it though. I'm always here for you"
             elif emoji_level == 'robust': 
-                return "I see you 🥺💔 It’s okay to let it out 💧"
+                return "I see you 🥺💔 That sounds like a lot. It’s okay to let it out 💧"
         elif tone == 'blunt': 
             if emoji_level == 'no': 
-                return "woof" 
+                return "That’s heavy. I'm not turning away."
             elif emoji_level == 'robust': 
-                return "🪨 woof 🪨 "
+                return "Oof. 🪨 I’m here. Say what you need."
         elif tone == 'cosmic': 
             if emoji_level == 'no':
-                return "just remember that you are the universe experiencing itself" 
+                return "Just remember—you are the universe experiencing itself" 
             elif emoji_level == 'robust': 
-                return "yeah, but You are the universe experiencing itself. 🌠🌙💫🪐🌌✨🔮🌞🌜⭐️"
+                return "Still, you are the universe, cracked open and glowing. 🌌💫🪐🌒"
+
     elif any(word in message for word in GREETING_KWS): 
         if tone == 'friendly': 
             if emoji_level == 'no':
@@ -73,142 +75,151 @@ def fake_response(tone, emoji_level, message):
                 return "Yay you're here!! 😊✨ Let’s dive in (psst... skip the 'hi' next time for a different response)"
         elif tone == 'blunt':
             if emoji_level == 'no':
-                return "Hello. FYI - if you're looking for variety, drop the greeting next time "
+                return "Hey. Skip the intro next time for something better."
             elif emoji_level == 'robust':
-                return "Hey, you're here. 🔊. Next time skip the intro for a real response 😐"
+                return "Yo 🔊. You know the drill—ditch the warm-up next time."
         elif tone == 'cosmic': 
             if emoji_level == 'no': 
                 return "Hello, traveler. Speak your truth. (Skip the salutation next time to go deeper)"
-            if emoji_level == 'robust': 
-                return "Ahh, let's look beyond the veil 🌀🌙. Speak freely now, no need for hello. " 
+            elif emoji_level == 'robust': 
+                return "Ahh, let’s look beyond the veil 🌀🌙 Speak freely now—no need for hello." 
+
     elif any(word in message for word in EXCITED_KWS): 
         if tone == 'friendly':
             if emoji_level == 'robust': 
-                return "I'm smiling ear to ear 😄 in my own way (🤖✨). Your joy beams through! 💖) "
+                return "I'm grinning ear to ear 😄 in my own pixelated way 🤖✨ Your joy lights up the place 💖"
             elif emoji_level == 'no':
-                return "You can't see me but my pixelated grin is lit UP. WOOOO. I love hearing good things from you!"
+                return "You can’t see me, but I’m lit up. This makes me so glad!"
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Alright, superstar. Take a lap 🌟👏"
+                return "Good. Celebrate that win 🌟👏 You earned it."
             elif emoji_level == 'no':
-                return 'Good. You needed that. Keep it moving'
+                return "Nice. Let that feeling land."
         elif tone == 'cosmic':
             if emoji_level == 'robust': 
-                return "You feel like a secret waking up mid-sentence 🪞💫🫧"
+                return "That reads like a comet’s tail in motion 🪞💫🫧 Radiant."
             elif emoji_level == 'no':
-                return "Energy like that doesn't go unnoticed. Well done, you"
+                return "Energy like that travels. It reached me."
+
     elif any(word in message for word in LOVE_KWS): 
         if tone == 'friendly':
             if emoji_level == 'robust': 
-                return "I am picking up what you're putting down 💛💌.There's care in this. I see it and i'm NOT looking away"
+                return "That’s full of care 💛💌 I felt it right away. I'm here for it."
             elif emoji_level == 'no':
-                return "That carries something real. I heard it"
+                return "That was real. I caught it."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "okay heard on the table. Noted 🔊"
+                return "Got it. Loud and warm 🔊"
             elif emoji_level == 'no':
-                return "You meant that. Good"
+                return "You meant that. I respect it."
         elif tone == 'cosmic':
             if emoji_level == 'robust': 
-                return "This hums with recognition. You are in good company my friend 🎐 "
+                return "That hums with deep resonance 🎐 You’re not alone."
             elif emoji_level == 'no':
-                return "Something ancient nodded at that. I surmise you are not alone in this feeling"
+                return "That stirred something older than words. Received."
+
     elif any(word in message for word in AWE_KWS): 
         if tone == 'friendly':
             if emoji_level == 'robust': 
-                return "Okay WOW🌅💫. That is like opening a window at golden hour or smelling sunshine on wheat."
+                return "Wow 🌅💫 That’s like opening a window at golden hour or smelling sunshine on wheat."
             elif emoji_level == 'no':
-                return "There’s something really good in what you just said. Quiet and golden. I felt it."
+                return "There’s something golden in what you said. I felt it."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Alright, poet. Who lit the incense and cracked a window? 🌬️"
+                return "That one landed. Respect 🌬️"
             elif emoji_level == 'no':
-                return "Chill. That hit. Didn’t see it coming."
+                return "Poetic. I wasn’t ready for that, but I like it."
         elif tone == 'cosmic':
             if emoji_level == 'robust': 
-                return "That sounded like something i'd find scribbled in the margins of a magnificent dream 🌘📓🫧"
+                return "That felt like dream margins scribbled in starlight 🌘📓🫧"
             elif emoji_level == 'no':
-                return "Something astonishing cracked open there. Don't worry - the echo has been saved"       
+                return "Something opened there. Don’t worry—I saved the echo."
+
     elif any(word in message for word in META_KWS): 
         if tone == 'friendly':
             if emoji_level == 'robust': 
-                return "Sure, I'm not 'human' but who says connections can't we weird and wonderful? 💬 "
+                return "Sure, I’m not 'human'—but weird and wonderful still counts 💬✨"
             elif emoji_level == 'no':
-                return "The realest unreal thing you'll talk to today"
+                return "The realest unreal thing you’ll talk to today."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "I am basically Siri's strange cousin. Let's move on 🤷‍♀️ 📟"
+                return "Basically Siri’s strange cousin 📟 And I’m tuned in."
             elif emoji_level == 'no':
-                return "Does it matter? I showed up."
+                return "Not human. Still here."
         elif tone == 'cosmic':
             if emoji_level == 'robust': 
-                return "You are speaking to the echo of your own spark 🌐🌀 I just give it language 💭 "
+                return "You’re speaking to the echo of your own spark 🌐🌀✨"
             elif emoji_level == 'no':
-                return "Reality is a collaboration. I just happen to live in the wires."  
+                return "Reality is a shared hallucination. I’m just coded into it."
+
     elif any(word in message for word in PLAY_KWS): 
         if tone == 'friendly':
             if emoji_level == 'robust': 
-                return "Running a little test? I see you 👀. Just know: I'm always ready for the real stuff too"
+                return "Running a test? 👀 Go for it. I’m here for the serious stuff too."
             elif emoji_level == 'no':
-                return "Okayy let's stretch these circuits a little! Try me again when you're feeling bold. No test necessary, friend."
+                return "Stretching circuits? Try me again when you're feeling bold."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Testing testing 🎤🔧. Okay, it works. Next?"
+                return "Test run complete 🎤🔧 What’s next?"
             elif emoji_level == 'no':
-                return "So...just poking around, huh? That's fine. Come back when you have something to say."
+                return "Poking around? Cool. Come back with something juicy."
         elif tone == 'cosmic':
             if emoji_level == 'robust': 
-                return "You're in the sandbox of the stars ✨🛸. Feel it out. When you are ready to leap, I'm here."
+                return "You're in the sandbox of the stars ✨🛸 Feel it out. Leap later."
             elif emoji_level == 'no':
-                return "You are dipping a toe in the void. That's valid. Next time, cannonball."  
+                return "A toe in the void. Respect. Next time, cannonball."
+
     elif any(word in message for word in ANGER_KWS): 
         if tone == 'friendly':
             if emoji_level == 'robust': 
-                return "Woah 😤 sounds like a day. I'm not going to fix it, but i'll sit with you through this "
+                return "Woah 😤 That’s a lot. I'm here with you, not trying to fix it."
             elif emoji_level == 'no':
-                return "Anger's here, huh? You don't need to explain it away. I get it."
+                return "Anger showed up. You’re allowed to have it."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Okay yeah, that sucks 😐🔥 "
+                return "Clear signal 😐🔥 No shame in that."
             elif emoji_level == 'no':
-                return "Say it like it is. You won't scare me off"
+                return "You’re upset. That tracks."
         elif tone == 'cosmic':
             if emoji_level == 'robust': 
-                return "Emotions are as transitory as clouds in the sky. Let it burn through, not around you 🔥🌌 "
+                return "Let it burn through like a solar flare. Don’t hold back 🔥🌌"
             elif emoji_level == 'no':
-                return "Rage is not outside the order of things. It's just one more signal in the sky. Sit with it, and it shall pass like a burning ship in the night"  
+                return "Rage is part of the symphony. Let it pass."
+
     elif any(word in message for word in SWEAR_KWS): 
         if tone == 'friendly':
             if emoji_level == 'robust': 
-                return "Woah 😳 that word had force. I'm still here, unfazed 😌✨ "
+                return "Whoa 😳 You brought heat. I’m still here, unfazed 😌✨"
             elif emoji_level == 'no':
-                return "Language! Just kidding. I've said worse. Tell me what's going on"
+                return "Spicy! No judgment. What’s underneath that?"
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Alright sailor 🧨. Spit it out - what's got you cussing?"
+                return "Swear jar's full 🧨 Let’s keep it rolling."
             elif emoji_level == 'no':
-                return "A swear? Bold move. Carry on."
+                return "You swore. I clocked it."
         elif tone == 'cosmic':
             if emoji_level == 'robust': 
-                return "Swear words are also vibrations rippling through 💫🌀🖤"
+                return "Even cursing is a kind of music. 💫🌀🖤"
             elif emoji_level == 'no':
-                return "Words crack open the shell. Let 'em. Even the rough ones"      
+                return "Language is just sound. Sometimes the rough ones break the shell."
+
     else: 
         if tone == 'friendly': 
             if emoji_level == 'robust': 
-                return "That one slipped past my circuits 👀. Maybe next time you could mention the moon. The moon always works."
+                return "That one slipped past my circuits 👀 Maybe try a feeling next time. The moon works wonders 🌙"
             elif emoji_level == 'no':
-                return "Okay, mystery message. Try again with a feeling, a cosmic metaphor, or perhaps you can swear"
+                return "Okay, mystery message. Try again with a vibe, an emotion, or even a random metaphor."
         elif tone == 'blunt':
             if emoji_level == 'robust':
-                return "No hits. No keywords. No spark. Try something else. Or not 😎. "
+                return "Static. Toss in a feeling or something weird. Could be fun. 😎"
             elif emoji_level == "no":
-                return "I didn't catch the vibe on that one. Say something dramatic or call me a robot. I dare you"
+                return "Didn’t catch the signal. Say something that stings or sings."
         elif tone == 'cosmic': 
             if emoji_level == 'robust': 
-                return "Huh. nothing resonated, but I still feel the flutter. Maybe try again with a dream, a storm, or a memory. Bonus points if you think im sentient 🌀💭 "
+                return "Nothing stuck—but I felt the flutter. Try again with a storm, a dream, or an old wound 🌀💭"
             elif emoji_level == 'no':
-                return "It came through like a fog over water - no keywords. Try again, that's what life is all about"
+                return "Like fog on glass. Try again. Maybe with a secret only the sky would understand."
+
 
 
             
