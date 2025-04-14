@@ -46,7 +46,7 @@
   margin-right: 10px;
 }
 .btn.warn {
-    background-color: #cdb4db; /* lavender or your preferred accent */
+    background-color: #cdb4db; 
     color: white;
     padding: 0.6rem 1.2rem;
     border-radius: 8px;
@@ -60,7 +60,7 @@
   }
   
   .btn.danger {
-    background-color: #ff6b6b; /* soft coral or use your theme red */
+    background-color: #ff6b6b; 
     color: white;
     padding: 0.6rem 1.2rem;
     border-radius: 8px;

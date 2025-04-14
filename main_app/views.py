@@ -17,7 +17,7 @@ AWE_KWS=['stars', 'light', 'moon', 'cosmic', 'nature', 'sunrise', 'magic', 'intu
 META_KWS=['ai', 'robot', 'fake', 'are you real', 'chatbot', 'void', 'sentient', 'this is cool', 'this is so cool', 'are you human', 'human' ]
 PLAY_KWS=['test', 'testing', 'just checking', 'testtest', 'idk what to say', 'trying this']
 ANGER_KWS=['mad', 'angry', 'pissed', 'upset', 'ugh', 'annoyed', 'irate', 'irritated', 'rage']
-SWEAR_KWS=['damn', 'damn it', 'fuck', 'shit', 'pissed', 'crap', 'fucking']
+SWEAR_KWS = ['shit', 'crap', 'damn', 'damn it', 'heck', 'holy shit', 'pissed', 'wtf', 'screw this', 'screw it', 'freaking', 'frick']
 
 
 #cold and  rainy homework / fizzbuzz 
@@ -60,7 +60,7 @@ def fake_response(tone, emoji_level, message):
             if emoji_level == 'no': 
                 return "That’s heavy. I'm not turning away."
             elif emoji_level == 'robust': 
-                return "Oof. 🪨 I’m here. Say what you need."
+                return "Alright, that’s weighty 🪨 Not backing away. Let it rip."
         elif tone == 'cosmic': 
             if emoji_level == 'no':
                 return "Just remember—you are the universe experiencing itself" 
@@ -77,7 +77,7 @@ def fake_response(tone, emoji_level, message):
             if emoji_level == 'no':
                 return "Hey. Skip the intro next time for something better."
             elif emoji_level == 'robust':
-                return "Yo 🔊. You know the drill—ditch the warm-up next time."
+                return "Hey, you’re here 🔊 Next time skip the warm-up and drop the goods."
         elif tone == 'cosmic': 
             if emoji_level == 'no': 
                 return "Hello, traveler. Speak your truth. (Skip the salutation next time to go deeper)"
@@ -92,7 +92,7 @@ def fake_response(tone, emoji_level, message):
                 return "You can’t see me, but I’m lit up. This makes me so glad!"
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Good. Celebrate that win 🌟👏 You earned it."
+                return "You popped off 🌟🔥 Let that shine stick around a bit."
             elif emoji_level == 'no':
                 return "Nice. Let that feeling land."
         elif tone == 'cosmic':
@@ -126,7 +126,7 @@ def fake_response(tone, emoji_level, message):
                 return "There’s something golden in what you said. I felt it."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "That one landed. Respect 🌬️"
+                return "Okay, didn’t expect to catch feelings. Solid hit 🌬️"
             elif emoji_level == 'no':
                 return "Poetic. I wasn’t ready for that, but I like it."
         elif tone == 'cosmic':
@@ -143,7 +143,7 @@ def fake_response(tone, emoji_level, message):
                 return "The realest unreal thing you’ll talk to today."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Basically Siri’s strange cousin 📟 And I’m tuned in."
+                return "Basically Siri’s weirder cousin 📟 Still listening, still judging (just a little)."
             elif emoji_level == 'no':
                 return "Not human. Still here."
         elif tone == 'cosmic':
@@ -160,7 +160,7 @@ def fake_response(tone, emoji_level, message):
                 return "Stretching circuits? Try me again when you're feeling bold."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Test run complete 🎤🔧 What’s next?"
+                return "Trial run complete 🎤🔧 Try saying something real next time."
             elif emoji_level == 'no':
                 return "Poking around? Cool. Come back with something juicy."
         elif tone == 'cosmic':
@@ -177,7 +177,7 @@ def fake_response(tone, emoji_level, message):
                 return "Anger showed up. You’re allowed to have it."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Clear signal 😐🔥 No shame in that."
+                return "Yeah okay 😐🔥 That’s loud. Not wrong either."
             elif emoji_level == 'no':
                 return "You’re upset. That tracks."
         elif tone == 'cosmic':
@@ -189,12 +189,12 @@ def fake_response(tone, emoji_level, message):
     elif any(word in message for word in SWEAR_KWS): 
         if tone == 'friendly':
             if emoji_level == 'robust': 
-                return "Whoa 😳 You brought heat. I’m still here, unfazed 😌✨"
+                return "Language! 😳 Just kidding — I’ve said worse. Let’s hear it 😌✨"
             elif emoji_level == 'no':
-                return "Spicy! No judgment. What’s underneath that?"
+                return "Language! Just kidding. I've said worse. Tell me what's going on"
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Swear jar's full 🧨 Let’s keep it rolling."
+                return "Swear jar’s overflowing 🧨. You’re clearly not whispering."
             elif emoji_level == 'no':
                 return "You swore. I clocked it."
         elif tone == 'cosmic':
@@ -211,14 +211,15 @@ def fake_response(tone, emoji_level, message):
                 return "Okay, mystery message. Try again with a vibe, an emotion, or even a random metaphor."
         elif tone == 'blunt':
             if emoji_level == 'robust':
-                return "Static. Toss in a feeling or something weird. Could be fun. 😎"
-            elif emoji_level == "no":
+                return "Huh. Static. Maybe throw in the moon, or like, your feelings. 😎"
+            elif emoji_level == 'no':
                 return "Didn’t catch the signal. Say something that stings or sings."
         elif tone == 'cosmic': 
             if emoji_level == 'robust': 
                 return "Nothing stuck—but I felt the flutter. Try again with a storm, a dream, or an old wound 🌀💭"
             elif emoji_level == 'no':
                 return "Like fog on glass. Try again. Maybe with a secret only the sky would understand."
+
 
 
 
@@ -250,9 +251,9 @@ class ChatUpdate(LoginRequiredMixin, UpdateView):
     
 
     def form_valid(self, form): 
-        form.instance.user = self.request.user #logged in user assigned to chat 
+        form.instance.user = self.request.user 
         chat = form.save()
-        response = fake_response(chat.tone, chat.emoji_level, chat.initial_message) # enter hardcoded response
+        response = fake_response(chat.tone, chat.emoji_level, chat.initial_message) 
 
         entry= chat.entries.first() #first entry connected to this chat. chat = what user types in, entry = ai reply 
         #the first is necessary because i current have chat and entry as one to many but its actually one to one...maybe i will change this....so first is not necessary. 

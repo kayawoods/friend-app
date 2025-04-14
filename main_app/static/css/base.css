@@ -1,4 +1,4 @@
-/* static/css/base.css */
+
 
 html {
     box-sizing: border-box;
@@ -270,7 +270,6 @@ html {
     box-shadow: var(--hover-glow);
   }
   
-  /* Optional: Add underline animation like other nav links */
   #logout-form button::after {
     content: '';
     position: absolute;
