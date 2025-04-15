@@ -60,7 +60,7 @@ def fake_response(tone, emoji_level, message):
             if emoji_level == 'no': 
                 return "That’s a lot. Don’t sugarcoat it. I can take it."
             elif emoji_level == 'robust': 
-                return "Rough. Say it straight. I’m still here."
+                return "Rough. Say it straight 💬 No filter. I’m still here 🧱"
         elif tone == 'cosmic': 
             if emoji_level == 'no':
                 return "Just remember, you are the universe experiencing itself" 
@@ -77,7 +77,7 @@ def fake_response(tone, emoji_level, message):
             if emoji_level == 'no':
                 return "Hey. Skip the hello next time. Get to it."
             elif emoji_level == 'robust':
-                return "Hey, you’re here. Now cut the intro. What’s real?"
+                return "Hey 👋 You’re here. Now cut the intro 🎯 What’s real?"
         elif tone == 'cosmic': 
             if emoji_level == 'no': 
                 return "Hello, traveler. Speak your truth. (Skip the salutation next time to go deeper)"
@@ -92,7 +92,7 @@ def fake_response(tone, emoji_level, message):
                 return "You can’t see me, but I’m lit up. This makes me so glad!"
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "You popped off. Let that shine stick around."
+                return "You popped off 💥 Let that shine stick around 🔥"
             elif emoji_level == 'no':
                 return "Okay. That hit. Let it ride."
         elif tone == 'cosmic':
@@ -109,7 +109,7 @@ def fake_response(tone, emoji_level, message):
                 return "That was real. I caught it."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Got it. Loud and warm."
+                return "Got it ❤️‍🔥 Heard you loud and clear 📡"
             elif emoji_level == 'no':
                 return "That landed. No fluff needed."
         elif tone == 'cosmic':
@@ -126,7 +126,7 @@ def fake_response(tone, emoji_level, message):
                 return "There’s something golden in what you said. I felt it."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Okay, didn’t expect to catch feelings. Solid hit."
+                return "Okay ⚡ Didn’t expect to catch feelings 😶‍🌫️ Solid hit."
             elif emoji_level == 'no':
                 return "Alright, that cracked through. Didn’t see it coming."
         elif tone == 'cosmic':
@@ -143,7 +143,7 @@ def fake_response(tone, emoji_level, message):
                 return "The realest unreal thing you’ll talk to today."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Basically Siri’s weirder cousin. Still here. Still judging."
+                return "Basically Siri’s weirder cousin 🤖 Still here 👀 Still judging 🧠"
             elif emoji_level == 'no':
                 return "Not a person. Still clocking everything."
         elif tone == 'cosmic':
@@ -160,7 +160,7 @@ def fake_response(tone, emoji_level, message):
                 return "Stretching circuits? Try me again when you're feeling bold."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Trial run logged. Try real talk next time."
+                return "Trial run logged 🗂️ Try real talk next time 🎙️"
             elif emoji_level == 'no':
                 return "Test run? Cool. Come back when it matters."
         elif tone == 'cosmic':
@@ -177,7 +177,7 @@ def fake_response(tone, emoji_level, message):
                 return "Anger showed up. You’re allowed to have it."
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "You’re loud. You’re not wrong."
+                return "You’re loud 🔊 You’re not wrong 🔥"
             elif emoji_level == 'no':
                 return "Yeah. That’s heat. Makes sense."
         elif tone == 'cosmic':
@@ -194,7 +194,7 @@ def fake_response(tone, emoji_level, message):
                 return "Language! Just kidding. I've said worse. Tell me what's going on"
         elif tone == 'blunt':
             if emoji_level == 'robust': 
-                return "Swear jar’s full. You’re clearly not whispering."
+                return "Swear jar’s full 💣 You’re clearly not whispering 📢"
             elif emoji_level == 'no':
                 return "You swore. Noted."
         elif tone == 'cosmic':
@@ -211,14 +211,14 @@ def fake_response(tone, emoji_level, message):
                 return "Okay, mystery message. Try again with a vibe, an emotion, or even a random metaphor."
         elif tone == 'blunt':
             if emoji_level == 'robust':
-                return "Huh. Static. Maybe throw in a feeling next time."
+                return "Huh. Static ⚠️ Maybe throw in a feeling next time 🧠"
             elif emoji_level == 'no':
                 return "Didn’t land. Try again with something honest."
         elif tone == 'cosmic': 
             if emoji_level == 'robust': 
                 return "Nothing stuck, but I felt the flutter. Try again with a storm, a dream, or an old wound 🌀💭"
             elif emoji_level == 'no':
-                return "Like fog on glass. Try again. Maybe with a secret only the sky would understand" 
+                return "Like fog on glass. Try again. Maybe with a secret only the sky would understand."
 
 
 
