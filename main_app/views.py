@@ -20,7 +20,7 @@ ANGER_KWS=['mad', 'angry', 'pissed', 'upset', 'ugh', 'annoyed', 'irate', 'irrita
 SWEAR_KWS = ['shit', 'crap', 'damn', 'damn it', 'heck', 'holy shit', 'pissed', 'wtf', 'screw this', 'screw it', 'freaking', 'frick']
 
 
-#cold and  rainy homework / fizzbuzz 
+
 @login_required
 def chat_index(request):
     print("Current user:", request.user)
